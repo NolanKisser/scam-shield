@@ -24,7 +24,8 @@ adult child) get alerted when a protected relative receives a likely scam.
 - **Collectors** (`app/collectors/`) produce `Signal`s with a weight; hard evidence (blocklist hit, lookalike
   brand domain, domain < 30 days old) also sets a *floor* the final score can't drop below.
 - **Claude** (`app/llm.py`) gets the message as untrusted data plus the evidence, and returns a structured
-  `LLMVerdict` (score, scam type, red flags, advice). Server-side refusal fallback is enabled.
+  `LLMVerdict` (score, scam type, red flags, advice). Server-side refusal fallback is enabled. Any other
+  model can stand in for Claude; see [Use any model](#use-any-model).
 - **Blend** (`app/pipeline.py`): 40% noisy-OR of signals + 60% Claude, then apply floors. If Claude is
   unavailable the service still answers using rules only.
 
@@ -37,6 +38,26 @@ cp .env.example .env        # add ANTHROPIC_API_KEY (or run `ant auth login`)
 # open http://localhost:8000
 .venv/Scripts/python -m pytest       # offline tests
 ```
+
+## Use any model
+
+Claude is the default, but the judge step works with any model. Set these in `.env`:
+
+| Provider | `LLM_PROVIDER` | `LLM_BASE_URL` | `LLM_MODEL` (example) |
+|---|---|---|---|
+| Claude (default) | `anthropic` | | `claude-opus-5-5`, `claude-haiku-4-5`, ... |
+| OpenAI | `openai` | `https://api.openai.com/v1` | `gpt-4o-mini` |
+| Google Gemini | `openai` | `https://generativelanguage.googleapis.com/v1beta/openai` | `gemini-2.5-flash` |
+| OpenRouter | `openai` | `https://openrouter.ai/api/v1` | `meta-llama/llama-3.3-70b-instruct` |
+| Groq | `openai` | `https://api.groq.com/openai/v1` | `llama-3.3-70b-versatile` |
+| Ollama (local) | `openai` | `http://localhost:11434/v1` | `llama3.1` |
+| LM Studio / vLLM (local) | `openai` | `http://localhost:1234/v1` | whatever is loaded |
+
+`LLM_API_KEY` holds the key for `openai`-type providers (leave it blank for local servers). With Claude,
+older models that don't support structured outputs or `effort` are retried automatically with plain JSON
+prompting. Small local models give rougher verdicts, but the evidence floors still hold, and an
+unreadable answer just falls back to rules-only scoring. Screenshot upload needs a vision-capable model.
+The old `CLAUDE_MODEL` / `CLAUDE_EFFORT` variables still work.
 
 ## Endpoints
 

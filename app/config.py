@@ -1,12 +1,23 @@
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+DEFAULT_MODELS = {"anthropic": "claude-opus-5-5", "openai": "gpt-4o-mini"}
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    # Claude. The SDK also picks up ANTHROPIC_API_KEY / `ant auth login` on its own.
-    claude_model: str = "claude-opus-5-5"
-    claude_effort: str = "low"  # low keeps SMS replies fast; raise for harder cases
+    # Model provider:
+    #   "anthropic": Claude via the Anthropic SDK (ANTHROPIC_API_KEY or `ant auth login`)
+    #   "openai":    any OpenAI-compatible Chat Completions endpoint: OpenAI, Gemini,
+    #                OpenRouter, Groq, Together, Mistral, Ollama, LM Studio, vLLM, ...
+    llm_provider: str = "anthropic"
+    llm_model: str = Field("", validation_alias=AliasChoices("llm_model", "claude_model"))
+    llm_base_url: str = "https://api.openai.com/v1"  # openai provider only
+    llm_api_key: str = ""  # openai provider only; blank for local servers like Ollama
+    # Claude only; blank omits it (for models that don't support effort)
+    llm_effort: str = Field("low", validation_alias=AliasChoices("llm_effort", "claude_effort"))
+    llm_timeout_s: float = 20.0
 
     # Optional reputation APIs (collectors skip themselves when unset)
     google_safe_browsing_key: str = ""
@@ -24,6 +35,10 @@ class Settings(BaseSettings):
     guardian_alert_threshold: float = 0.8
 
     collector_timeout_s: float = 2.0
+
+    @property
+    def model(self) -> str:
+        return self.llm_model or DEFAULT_MODELS.get(self.llm_provider, "")
 
     def guardian_map(self) -> dict[str, str]:
         pairs = [p.split(":", 1) for p in self.guardians.split(",") if ":" in p]
