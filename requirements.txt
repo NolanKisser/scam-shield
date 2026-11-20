@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+httpx
+anthropic>=2.11
+twilio
+python-multipart
+pydantic-settings
+pytest
+pytest-asyncio

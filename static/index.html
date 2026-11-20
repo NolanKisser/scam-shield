@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scam Shield</title>
+<style>
+  :root { --bg:#f7f7f5; --fg:#1d1d1f; --muted:#6b6b70; --card:#fff; --line:#e3e3e0;
+          --high:#c62828; --med:#b26a00; --low:#2e7d32; --accent:#1f4fd1; --on-accent:#fff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141416; --fg:#ececee; --muted:#9a9aa2; --card:#1e1e22; --line:#2e2e33;
+            --high:#ef5350; --med:#ffb74d; --low:#66bb6a; --accent:#7aa2ff; --on-accent:#0d1430; }
+  }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.5 system-ui, sans-serif }
+  main { max-width:640px; margin:0 auto; padding:32px 16px }
+  h1 { margin:0 0 4px; font-size:28px }
+  p.sub { margin:0 0 24px; color:var(--muted) }
+  textarea { width:100%; min-height:140px; padding:12px; font:inherit; color:inherit;
+             background:var(--card); border:1px solid var(--line); border-radius:10px }
+  .row { display:flex; gap:12px; align-items:center; margin:12px 0 24px; flex-wrap:wrap }
+  button { padding:12px 22px; font:inherit; font-weight:600; border:0; border-radius:10px;
+           background:var(--accent); color:var(--on-accent); cursor:pointer }
+  button:disabled { opacity:.6; cursor:wait }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px }
+  .level { font-size:24px; font-weight:700 }
+  .HIGH { color:var(--high) } .MEDIUM { color:var(--med) } .LOW { color:var(--low) }
+  ul { padding-left:20px } .muted { color:var(--muted); font-size:14px }
+  details { margin-top:12px } pre { white-space:pre-wrap; font-size:13px }
+</style>
+</head>
+<body>
+<main>
+  <h1>Scam Shield</h1>
+  <p class="sub">Paste a suspicious text or email, or upload a screenshot. Don't click the links in it.</p>
+  <form id="f">
+    <textarea name="text" placeholder="Paste the message here…"></textarea>
+    <div class="row">
+      <input type="file" name="image" accept="image/png,image/jpeg,image/webp,image/gif">
+      <button id="go">Check it</button>
+    </div>
+  </form>
+  <div id="out"></div>
+</main>
+<script>
+const f = document.getElementById('f'), out = document.getElementById('out'), go = document.getElementById('go');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+f.addEventListener('submit', async e => {
+  e.preventDefault(); go.disabled = true; out.innerHTML = '<p class="muted">Checking…</p>';
+  try {
+    const r = await fetch('/api/check', { method:'POST', body:new FormData(f) });
+    const v = await r.json();
+    if (!r.ok) throw new Error(v.detail || r.statusText);
+    out.innerHTML = `<div class="card">
+      <div class="level ${v.risk_level}">${v.risk_level} RISK · ${Math.round(v.risk_score*100)}%</div>
+      <p><strong>${esc(v.summary)}</strong></p>
+      ${v.scam_type && v.scam_type !== 'none' ? `<p class="muted">Looks like: ${esc(v.scam_type)}</p>` : ''}
+      <ul>${v.red_flags.map(x => `<li>${esc(x.evidence)}</li>`).join('')}</ul>
+      <p><strong>What to do:</strong> ${esc(v.recommended_action)}</p>
+      <details><summary class="muted">How we decided (${v.signals.length} automated signals${v.llm_used ? ' + AI review' : ''})</summary>
+        <pre>${esc(JSON.stringify(v.signals, null, 2))}</pre></details></div>`;
+  } catch (err) { out.innerHTML = `<p class="HIGH">${esc(err.message)}</p>`; }
+  finally { go.disabled = false; }
+});
+</script>
+</body>
+</html>

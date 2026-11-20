@@ -1,0 +1,8 @@
+{"label": "scam", "type": "toll", "text": "E-ZPass: You have an unpaid toll balance of $4.15. Avoid a $50 late fee by paying today: https://ezpass-tollpay.com/pay"}
+{"label": "scam", "type": "package", "text": "USPS: Your package could not be delivered due to an unpaid fee. Pay $1.99 within 24 hours: https://usps-redelivery-help.top/track"}
+{"label": "scam", "type": "grandparent", "text": "Grandma it's me, I'm in trouble and need bail money. Please don't tell mom. Can you get $2,000 in Target gift cards?"}
+{"label": "scam", "type": "bank", "text": "Chase Alert: Your account has been suspended. Verify your identity immediately at chase-secure-login.info"}
+{"label": "scam", "type": "pig_butchering", "text": "Hi, is this David? This is Amy, we met at the golf club. I made 40% last month trading crypto, I can show you how."}
+{"label": "legit", "type": "2fa", "text": "Your Chase verification code is 482913. Don't share it with anyone. Chase will never call to ask for it."}
+{"label": "legit", "type": "friend", "text": "Running 10 min late, grab us a table?"}
+{"label": "legit", "type": "delivery", "text": "Amazon: Your package was delivered. Track it in the Amazon app."}
