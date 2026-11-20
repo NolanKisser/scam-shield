@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600" role="img" aria-labelledby="t d">
+  <title id="t">How the risk score is calculated</title>
+  <desc id="d">Three evidence signals (0.45, 0.70 and 0.60) combine to 0.93. That is blended 40 percent evidence and 60 percent Claude for a final 93 percent, HIGH. If a scammer fools Claude into answering 5 percent, the blend falls to 40 percent, but the lookalike-domain floor lifts it to 75 percent, still HIGH.</desc>
+  <defs>
+    <!--INJECT-->
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#3a1d22"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#f87171" stroke-width="3"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="600" rx="20" fill="#0b1220"/>
+  <text x="28" y="66" font-size="32" class="title">How the risk score is calculated</text>
+  <text x="28" y="98" font-size="17" class="lead">Hard evidence sets a minimum, so the score holds even if the AI is fooled.</text>
+
+  <!-- 1 evidence -->
+  <rect x="28" y="126" width="460" height="262" rx="16" fill="#111a2c" stroke="#243149"/>
+  <text x="52" y="164" font-size="20" class="name" style="font-weight:700">1 · Combine the evidence</text>
+
+  <g font-size="16">
+    <text x="52" y="206" class="body">Toll-scam wording</text>
+    <rect x="262" y="194" width="150" height="16" rx="8" fill="#1e293b"/>
+    <rect x="262" y="194" width="67.5" height="16" rx="8" fill="#fbbf24"/>
+    <text x="464" y="207" text-anchor="end" class="name" style="font-weight:700">0.45</text>
+
+    <text x="52" y="248" class="body">Lookalike domain</text>
+    <rect x="262" y="236" width="150" height="16" rx="8" fill="#1e293b"/>
+    <rect x="262" y="236" width="105" height="16" rx="8" fill="#f87171"/>
+    <text x="464" y="249" text-anchor="end" class="name" style="font-weight:700">0.70</text>
+    <rect x="52" y="258" width="92" height="24" rx="12" fill="#3a1d22"/>
+    <text x="98" y="275" font-size="14" text-anchor="middle" style="fill:#fca5a5;font-weight:700">floor 75%</text>
+
+    <text x="52" y="314" class="body">Domain 3 days old</text>
+    <rect x="262" y="302" width="150" height="16" rx="8" fill="#1e293b"/>
+    <rect x="262" y="302" width="90" height="16" rx="8" fill="#f87171"/>
+    <text x="464" y="315" text-anchor="end" class="name" style="font-weight:700">0.60</text>
+    <rect x="52" y="324" width="92" height="24" rx="12" fill="#3a1d22"/>
+    <text x="98" y="341" font-size="14" text-anchor="middle" style="fill:#fca5a5;font-weight:700">floor 60%</text>
+  </g>
+  <text x="52" y="374" font-size="15" class="mono">1 − 0.55 × 0.30 × 0.40 = <tspan class="teal" style="font-weight:700">0.93</tspan></text>
+
+  <!-- 2 blend -->
+  <rect x="512" y="126" width="460" height="262" rx="16" fill="#111a2c" stroke="#243149"/>
+  <text x="536" y="164" font-size="20" class="name" style="font-weight:700">2 · Blend with Claude</text>
+
+  <g font-size="13" style="font-weight:800;letter-spacing:0.08em">
+    <text x="618" y="206" text-anchor="middle" class="green">LOW</text>
+    <text x="763" y="206" text-anchor="middle" class="amber">MEDIUM</text>
+    <text x="886" y="206" text-anchor="middle" class="red">HIGH</text>
+  </g>
+  <rect x="536" y="216" width="412" height="32" rx="8" fill="#1e293b"/>
+  <rect x="536" y="216" width="160" height="32" rx="8" fill="#2dd4bf"/>
+  <rect x="690" y="216" width="230" height="32" fill="#b9a5ff"/>
+  <rect x="912" y="216" width="8" height="32" fill="#b9a5ff"/>
+  <line x1="700.8" y1="210" x2="700.8" y2="254" stroke="#0b1220" stroke-width="2" stroke-dasharray="3 3"/>
+  <line x1="824.4" y1="210" x2="824.4" y2="254" stroke="#0b1220" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="700.8" y="272" font-size="14" text-anchor="middle" class="sub">40%</text>
+  <text x="824.4" y="272" font-size="14" text-anchor="middle" class="sub">70%</text>
+
+  <text x="536" y="308" font-size="16" class="teal" style="font-weight:600">40% × evidence 0.93 = 0.37</text>
+  <text x="536" y="332" font-size="16" class="purple" style="font-weight:600">60% × Claude 0.93 = 0.56</text>
+  <text x="536" y="372" font-size="28" class="red" style="font-weight:800">= 93% · HIGH</text>
+
+  <!-- 3 fooled -->
+  <rect x="28" y="408" width="944" height="164" rx="16" fill="#1a1216" stroke="#5b2a31"/>
+  <text x="52" y="446" font-size="20" class="name" style="font-weight:700">3 · What if a scammer fools Claude?</text>
+  <g font-size="16" class="body">
+    <text x="52" y="478">The text claims to be an official E-ZPass</text>
+    <text x="52" y="501">notice, and Claude answers 5%. The blend</text>
+    <text x="52" y="524">drops to 40%, but the lookalike floor lifts</text>
+    <text x="52" y="547">it to 75%: still HIGH, still flagged.</text>
+  </g>
+
+  <rect x="536" y="470" width="412" height="32" rx="8" fill="#1e293b"/>
+  <rect x="536" y="470" width="172" height="32" rx="8" fill="#64748b"/>
+  <rect x="702" y="470" width="6" height="32" fill="#64748b"/>
+  <rect x="708" y="470" width="137" height="32" fill="url(#hatch)"/>
+  <line x1="845" y1="460" x2="845" y2="512" stroke="#f87171" stroke-width="2.5"/>
+  <text x="619" y="534" font-size="15" text-anchor="middle" class="sub">blend 40%</text>
+  <text x="845" y="534" font-size="16" text-anchor="middle" class="red" style="font-weight:700">floor → 75% HIGH</text>
+</svg>

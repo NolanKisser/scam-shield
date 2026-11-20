@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-labelledby="t d">
+  <title id="t">Scam Shield</title>
+  <desc id="d">Scam Shield catches scam texts before you tap the link. A phone shows a fake E-ZPass toll text with a warning on top: possible scam, high risk, 93 percent.</desc>
+  <defs>
+    <!--INJECT-->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#141e38"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f87171" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#f87171" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="frame"><rect width="1000" height="380" rx="20"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1000" height="380" fill="url(#bg)"/>
+    <circle cx="820" cy="150" r="220" fill="url(#glow)"/>
+
+    <text x="54" y="146" font-size="60" class="title" style="font-weight:800;letter-spacing:-0.035em">Scam Shield</text>
+    <text x="56" y="196" font-size="22" class="name">Catches scam texts before you tap the link.</text>
+    <text x="56" y="230" font-size="17" class="lead">Link forensics + Claude's judgment, in about five seconds.</text>
+
+    <g font-size="15" class="name">
+      <rect x="56" y="268" width="181" height="38" rx="19" fill="#18233a" stroke="#2f3e58"/>
+      <circle cx="77" cy="287" r="5" fill="#2dd4bf"/>
+      <text x="91" y="292">Evidence-backed</text>
+      <rect x="247" y="268" width="176" height="38" rx="19" fill="#18233a" stroke="#2f3e58"/>
+      <circle cx="268" cy="287" r="5" fill="#fbbf24"/>
+      <text x="282" y="292">Guardian alerts</text>
+      <rect x="433" y="268" width="214" height="38" rx="19" fill="#18233a" stroke="#2f3e58"/>
+      <circle cx="454" cy="287" r="5" fill="#4ade80"/>
+      <text x="468" y="292">Contacts never read</text>
+    </g>
+
+    <!-- phone -->
+    <rect x="690" y="30" width="260" height="420" rx="40" fill="#05080f" stroke="#3b4a63" stroke-width="3"/>
+    <rect x="702" y="42" width="236" height="400" rx="30" fill="#0f172a"/>
+    <rect x="790" y="53" width="60" height="7" rx="3.5" fill="#1e293b"/>
+
+    <!-- warning notification -->
+    <rect x="712" y="72" width="216" height="120" rx="14" fill="#1f2937" stroke="#f87171" stroke-width="1.5"/>
+    <circle cx="733" cy="95" r="11" fill="#f87171"/>
+    <rect x="731.5" y="88" width="3" height="9" rx="1.5" fill="#1f2937"/>
+    <circle cx="733" cy="101" r="1.8" fill="#1f2937"/>
+    <text x="752" y="94" font-size="15" class="name" style="font-weight:700">Possible scam</text>
+    <text x="752" y="112" font-size="12.5" class="sub">from +1 (202) 555-0143</text>
+    <text x="726" y="142" font-size="14" class="red" style="font-weight:800;letter-spacing:0.02em">HIGH RISK · 93%</text>
+    <text x="726" y="162" font-size="12.5" class="body">Fake E-ZPass site, 3 days</text>
+    <text x="726" y="179" font-size="12.5" class="body">old. Don't tap the link.</text>
+
+    <!-- the scam text -->
+    <text x="716" y="216" font-size="12" class="sub">+1 (202) 555-0143 · now</text>
+    <rect x="712" y="226" width="206" height="130" rx="18" fill="#334155"/>
+    <g font-size="14" class="body" style="fill:#e5e7eb">
+      <text x="728" y="251">E-ZPass: You have an</text>
+      <text x="728" y="271">unpaid toll balance of</text>
+      <text x="728" y="291">$4.15. Avoid a $50 late</text>
+      <text x="728" y="311">fee by paying today:</text>
+    </g>
+    <text x="728" y="335" font-size="14" style="fill:#93c5fd">ezpass-tollpay.com/pay</text>
+    <path d="M728 342 q3 -3 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0" fill="none" stroke="#f87171" stroke-width="1.5"/>
+  </g>
+</svg>

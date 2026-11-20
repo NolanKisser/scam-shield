@@ -1,6 +1,9 @@
 # Scam Shield
 
-![Scam Shield: a phone shows a fake E-ZPass toll text with a "Possible scam, HIGH RISK 93%" warning on top](docs/hero.svg)
+<picture>
+  <source media="(max-width: 700px)" srcset="docs/hero-mobile.svg">
+  <img src="docs/hero.svg" alt="Scam Shield: a phone shows a fake E-ZPass toll text with a &quot;Possible scam, HIGH RISK 93%&quot; warning on top" width="100%">
+</picture>
 
 Forward a suspicious text, voicemail or screenshot, or let the Android app check texts from unknown
 numbers automatically, and get an evidence-backed scam verdict in seconds. Linked "guardians" (e.g. an
@@ -8,9 +11,15 @@ adult child) get alerted when a protected relative receives a likely scam.
 
 ## How it works
 
-![Pipeline: inputs, extraction, four parallel evidence collectors, Claude's judgment, then blending with evidence floors into a final verdict](docs/pipeline.svg)
+<picture>
+  <source media="(max-width: 700px)" srcset="docs/pipeline-mobile.svg">
+  <img src="docs/pipeline.svg" alt="Pipeline: inputs, extraction, four parallel evidence collectors, Claude's judgment, then blending with evidence floors into a final verdict" width="100%">
+</picture>
 
-![Scoring: evidence signals combine to 0.93, blended 40/60 with Claude's 0.93 for 93% HIGH; if Claude is fooled, the lookalike-domain floor keeps the score at 75%](docs/scoring.svg)
+<picture>
+  <source media="(max-width: 700px)" srcset="docs/scoring-mobile.svg">
+  <img src="docs/scoring.svg" alt="Scoring: evidence signals combine to 0.93, blended 40/60 with Claude's 0.93 for 93% HIGH; if Claude is fooled, the lookalike-domain floor keeps the score at 75%" width="100%">
+</picture>
 
 - **Collectors** (`app/collectors/`) produce `Signal`s with a weight; hard evidence (blocklist hit, lookalike
   brand domain, domain < 30 days old) also sets a *floor* the final score can't drop below.
@@ -47,7 +56,10 @@ cp .env.example .env        # add ANTHROPIC_API_KEY (or run `ant auth login`)
 
 ## Android app (automatic checks): `mobile/`
 
-![Android flow: a new text's notification is checked; saved contacts are ignored without reading the message; unknown numbers are sent to the server, which can trigger a warning notification and a guardian text](docs/android.svg)
+<picture>
+  <source media="(max-width: 700px)" srcset="docs/android-mobile.svg">
+  <img src="docs/android.svg" alt="Android flow: a new text's notification is checked; saved contacts are ignored without reading the message; unknown numbers are sent to the server, which can trigger a warning notification and a guardian text" width="100%">
+</picture>
 
 Expo app with a local native module (`mobile/modules/sms-guard`) that runs a
 `NotificationListenerService`. When a texting app (Google Messages, Samsung Messages, ...) shows a
@@ -76,3 +88,9 @@ iOS can't read texts, so iPhone users use the forward-to-number flow.
 - Phone-number intelligence (VoIP / carrier lookup)
 - Device auth + rate limiting on `/api/device/check`
 - Evaluate on `data/demo_messages.jsonl` + a larger labeled set; report accuracy / false-positive rate
+
+## Diagrams
+
+The images above are built from `docs/src/*.svg`. Edit those, then run `python docs/build_svgs.py`
+to embed the [Geist](https://github.com/vercel/geist-font) font (SIL OFL, `docs/fonts/`) so they render
+the same on every OS. Phone-width versions (`*-mobile.svg`) are swapped in by `<picture>` on narrow screens.

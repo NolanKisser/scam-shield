@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1090" viewBox="0 0 600 1090" role="img" aria-labelledby="t d">
+  <title id="t">Automatic checks on Android</title>
+  <desc id="d">A new text arrives and Scam Shield sees its notification. If the sender is a saved contact, it is ignored instantly and the text is never read, stored or sent. If not, the sender and text go to the server; a medium or high verdict shows a warning, and a linked guardian is texted at 80 percent or above.</desc>
+  <defs><!--INJECT--></defs>
+
+  <rect width="600" height="1090" rx="24" fill="#0b1220"/>
+  <text x="36" y="72" font-size="36" class="title">Automatic checks</text>
+  <text x="36" y="114" font-size="36" class="title">on Android</text>
+  <text x="36" y="152" font-size="21" class="lead">No forwarding. Works even when</text>
+  <text x="36" y="180" font-size="21" class="lead">the app is closed.</text>
+
+  <!-- wires -->
+  <path class="wire" d="M300 294 L300 322" marker-end="url(#arrow)"/>
+  <path class="wire" d="M300 410 L300 432" marker-end="url(#arrow)"/>
+  <path class="wire" d="M190 508 L161 508 L161 610" marker-end="url(#arrow)"/>
+  <path class="wire" d="M410 508 L439 508 L439 610" marker-end="url(#arrow)"/>
+  <path class="wire" d="M439 728 L439 772" marker-end="url(#arrow)"/>
+  <path class="wire" d="M300 868 L300 892" stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="214" width="360" height="80" rx="14" class="card"/>
+  <text x="300" y="262" font-size="22" text-anchor="middle" class="name">A new text arrives</text>
+
+  <rect x="60" y="326" width="480" height="84" rx="14" class="card"/>
+  <text x="300" y="362" font-size="22" text-anchor="middle" class="name">Scam Shield sees the alert</text>
+  <text x="300" y="392" font-size="20" text-anchor="middle" class="sub">no access to your inbox</text>
+
+  <path d="M300 436 L410 508 L300 580 L190 508 Z" fill="#17223a" stroke="#60a5fa" stroke-width="2"/>
+  <text x="300" y="516" font-size="22" text-anchor="middle" class="name">Saved contact?</text>
+
+  <text x="150" y="560" font-size="20" text-anchor="end" class="green strong">Yes</text>
+  <text x="450" y="560" font-size="20" class="amber strong">No</text>
+
+  <rect x="36" y="614" width="250" height="114" rx="14" fill="#12271f" stroke="#2f6b4f"/>
+  <text x="56" y="652" font-size="21" class="name">Ignored instantly</text>
+  <text x="56" y="682" font-size="20" class="sub" style="fill:#a7d7bd">text never read,</text>
+  <text x="56" y="708" font-size="20" class="sub" style="fill:#a7d7bd">stored, or sent</text>
+
+  <rect x="314" y="614" width="250" height="114" rx="14" class="card"/>
+  <text x="334" y="652" font-size="21" class="name">Check with server</text>
+  <text x="334" y="682" font-size="20" class="sub">sender + text only</text>
+
+  <rect x="60" y="776" width="480" height="92" rx="14" fill="#2a1518" stroke="#f87171" stroke-width="2"/>
+  <text x="84" y="814" font-size="21" class="name">Warning shown</text>
+  <text x="84" y="846" font-size="20" class="sub" style="fill:#d8b4b4">if MEDIUM or HIGH</text>
+
+  <rect x="60" y="896" width="480" height="92" rx="14" fill="#2a2412" stroke="#a37b1a"/>
+  <text x="84" y="934" font-size="21" class="name">Guardian texted</text>
+  <text x="84" y="966" font-size="20" class="sub" style="fill:#d9c89a">if linked and score ≥ 80%</text>
+
+  <text x="36" y="1036" font-size="20" class="sub">iPhone apps can't read texts, so iPhone</text>
+  <text x="36" y="1064" font-size="20" class="sub">users forward suspicious texts instead.</text>
+</svg>

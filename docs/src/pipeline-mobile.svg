@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1380" viewBox="0 0 600 1380" role="img" aria-labelledby="t d">
+  <title id="t">How a message gets checked</title>
+  <desc id="d">Messages arrive as forwarded texts, voicemails, screenshots, or automatically from the Android app. Links, numbers and amounts are pulled out; four evidence checks run at once; Claude weighs the text and the evidence; the final score (93 percent, HIGH, in this example) triggers a reply and, if linked, a guardian alert.</desc>
+  <defs><!--INJECT--></defs>
+
+  <rect width="600" height="1380" rx="24" fill="#0b1220"/>
+  <text x="36" y="72" font-size="36" class="title">How a message</text>
+  <text x="36" y="114" font-size="36" class="title">gets checked</text>
+  <text x="36" y="152" font-size="21" class="lead">One scam text, step by step.</text>
+
+  <!-- step 1 -->
+  <circle cx="52" cy="206" r="16" fill="#a9b6ca"/><text x="52" y="213" font-size="18" text-anchor="middle" style="fill:#0b1220;font-weight:800">1</text>
+  <text x="80" y="214" font-size="24" class="name">Comes in</text>
+  <g font-size="21" class="name">
+    <rect x="36" y="236" width="258" height="70" rx="14" class="card"/><text x="56" y="279">Forwarded text</text>
+    <rect x="306" y="236" width="258" height="70" rx="14" class="card"/><text x="326" y="279">Voicemail</text>
+    <rect x="36" y="318" width="258" height="70" rx="14" class="card"/><text x="56" y="361">Screenshot</text>
+    <rect x="306" y="318" width="258" height="70" rx="14" fill="#12271f" stroke="#2f6b4f"/><text x="326" y="361">Android app</text>
+  </g>
+  <path class="wire" d="M300 396 L300 426" marker-end="url(#arrow)"/>
+
+  <!-- step 2 -->
+  <circle cx="52" cy="460" r="16" fill="#a9b6ca"/><text x="52" y="467" font-size="18" text-anchor="middle" style="fill:#0b1220;font-weight:800">2</text>
+  <text x="80" y="468" font-size="24" class="name">Pull out the details</text>
+  <rect x="36" y="490" width="528" height="92" rx="14" class="card"/>
+  <text x="56" y="527" font-size="21" class="body">Links, phone numbers, amounts</text>
+  <text x="56" y="560" font-size="20" class="amber" style="font-weight:600">ezpass-tollpay.com · $4.15</text>
+  <path class="wire" d="M300 590 L300 620" marker-end="url(#arrow)"/>
+
+  <!-- step 3 -->
+  <circle cx="52" cy="654" r="16" fill="#a9b6ca"/><text x="52" y="661" font-size="18" text-anchor="middle" style="fill:#0b1220;font-weight:800">3</text>
+  <text x="80" y="662" font-size="24" class="name">Evidence, checked at once</text>
+  <g>
+    <rect x="36" y="684" width="258" height="92" rx="14" class="card"/>
+    <text x="56" y="720" font-size="21" class="name">Pattern rules</text>
+    <text x="56" y="752" font-size="20" class="amber" style="font-weight:600">scam wording</text>
+    <rect x="306" y="684" width="258" height="92" rx="14" class="card"/>
+    <text x="326" y="720" font-size="21" class="name">Lookalike</text>
+    <text x="326" y="752" font-size="20" class="red" style="font-weight:600">imitates E-ZPass</text>
+    <rect x="36" y="788" width="258" height="92" rx="14" class="card"/>
+    <text x="56" y="824" font-size="21" class="name">Domain age</text>
+    <text x="56" y="856" font-size="20" class="red" style="font-weight:600">3 days old</text>
+    <rect x="306" y="788" width="258" height="92" rx="14" class="card"/>
+    <text x="326" y="824" font-size="21" class="name">Blocklists</text>
+    <text x="326" y="856" font-size="20" class="sub">not listed yet</text>
+  </g>
+  <path class="wire" d="M300 888 L300 918" marker-end="url(#arrow)"/>
+
+  <!-- step 4 -->
+  <circle cx="52" cy="952" r="16" fill="#b9a5ff"/><text x="52" y="959" font-size="18" text-anchor="middle" style="fill:#0b1220;font-weight:800">4</text>
+  <text x="80" y="960" font-size="24" class="name">Claude judges</text>
+  <rect x="36" y="982" width="528" height="150" rx="16" fill="#1c1833" stroke="#b9a5ff" stroke-width="2"/>
+  <text x="56" y="1018" font-size="20" class="body">Weighs the text and the evidence,</text>
+  <text x="56" y="1046" font-size="20" class="body">and ignores orders hidden inside it.</text>
+  <line x1="56" y1="1066" x2="544" y2="1066" stroke="#3b3360"/>
+  <text x="56" y="1104" font-size="20" class="mono">risk<tspan x="118" class="red">0.93</tspan><tspan x="230">type</tspan><tspan x="292" class="purple">toll scam</tspan></text>
+  <path class="wire" d="M300 1140 L300 1170" marker-end="url(#arrow)"/>
+
+  <!-- step 5 -->
+  <circle cx="52" cy="1204" r="16" fill="#f87171"/><text x="52" y="1211" font-size="18" text-anchor="middle" style="fill:#0b1220;font-weight:800">5</text>
+  <text x="80" y="1212" font-size="24" class="name">Decide</text>
+  <rect x="36" y="1234" width="528" height="110" rx="16" fill="#2a1518" stroke="#f87171" stroke-width="2"/>
+  <text x="56" y="1308" font-size="52" class="red" style="font-weight:800;letter-spacing:-0.02em">93%</text>
+  <rect x="184" y="1272" width="78" height="34" rx="17" fill="#f87171"/>
+  <text x="223" y="1296" font-size="18" text-anchor="middle" style="fill:#2a1518;font-weight:800;letter-spacing:0.06em">HIGH</text>
+  <text x="300" y="1280" font-size="20" class="sub" style="fill:#d8b4b4">Reply or phone alert,</text>
+  <text x="300" y="1308" font-size="20" class="sub" style="fill:#d8b4b4">guardian texted if linked</text>
+</svg>
