@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="t d">
+  <title id="t">Automatic checks on Android</title>
+  <desc id="d">A new text arrives and Scam Shield sees the notification. If the sender is a saved contact, it is ignored and the message is never read. If it is a raw number, the sender and text go to the server; a medium or high verdict shows a warning notification, and a linked guardian is texted at 80 percent or above.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      text { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+      .h1 { font-size: 28px; font-weight: 800; fill: #f1f5f9; }
+      .lead { font-size: 16px; fill: #94a3b8; }
+      .name { font-size: 15px; font-weight: 700; fill: #f1f5f9; }
+      .small { font-size: 12.5px; fill: #94a3b8; }
+      .edge { font-size: 13px; font-weight: 700; }
+      .wire { fill: none; stroke: #475569; stroke-width: 1.6; }
+      .card { fill: #172033; stroke: #2c3a52; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="480" rx="20" fill="#0b1220"/>
+  <text x="40" y="58" class="h1">Automatic checks on Android</text>
+  <text x="40" y="86" class="lead">No forwarding needed. Runs in the background, even when the app is closed.</text>
+
+  <!-- wires -->
+  <path class="wire" d="M220 220 L258 220" marker-end="url(#arrow)"/>
+  <path class="wire" d="M440 220 L458 220" marker-end="url(#arrow)"/>
+  <path class="wire" d="M620 220 L678 220" marker-end="url(#arrow)"/>
+  <path class="wire" d="M540 290 L540 338" marker-end="url(#arrow)"/>
+  <path class="wire" d="M860 220 C900 220 898 172 938 172" marker-end="url(#arrow)"/>
+  <path class="wire" d="M860 220 C900 220 898 288 938 288" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+
+  <!-- 1 -->
+  <rect x="40" y="175" width="180" height="90" rx="12" class="card"/>
+  <text x="56" y="210" class="name">New text arrives</text>
+  <text x="56" y="232" class="small">Google / Samsung</text>
+  <text x="56" y="249" class="small">Messages</text>
+
+  <!-- 2 -->
+  <rect x="260" y="175" width="180" height="90" rx="12" class="card"/>
+  <text x="276" y="210" class="name">Scam Shield sees</text>
+  <text x="276" y="230" class="name">the notification</text>
+  <text x="276" y="252" class="small">via Notification access</text>
+
+  <!-- 3 decision -->
+  <path d="M540 150 L620 220 L540 290 L460 220 Z" fill="#1b2438" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="540" y="215" text-anchor="middle" class="name">Saved</text>
+  <text x="540" y="235" text-anchor="middle" class="name">contact?</text>
+
+  <text x="649" y="206" text-anchor="middle" class="edge" style="fill:#fbbf24">No</text>
+  <text x="552" y="320" class="edge" style="fill:#4ade80">Yes (shows a name)</text>
+
+  <!-- yes: ignored -->
+  <rect x="440" y="340" width="200" height="84" rx="12" fill="#13261f" stroke="#2f6b4f"/>
+  <text x="456" y="372" class="name">Ignored on the spot</text>
+  <text x="456" y="394" class="small">message text never read,</text>
+  <text x="456" y="411" class="small">stored, or sent</text>
+
+  <!-- no: check -->
+  <rect x="680" y="175" width="180" height="90" rx="12" class="card"/>
+  <text x="696" y="210" class="name">Check with server</text>
+  <text x="696" y="232" class="small">raw number → unknown;</text>
+  <text x="696" y="249" class="small">sends sender + text only</text>
+
+  <!-- outputs -->
+  <rect x="940" y="128" width="220" height="88" rx="12" fill="#2a1518" stroke="#f87171" stroke-width="1.5"/>
+  <text x="956" y="160" class="name">Warning notification</text>
+  <text x="956" y="182" class="small">"Possible scam from ..."</text>
+  <text x="956" y="200" class="small">if MEDIUM or HIGH</text>
+
+  <rect x="940" y="244" width="220" height="88" rx="12" fill="#2a2412" stroke="#a37b1a"/>
+  <text x="956" y="276" class="name">Guardian texted</text>
+  <text x="956" y="298" class="small">if linked and score ≥ 80%</text>
+  <text x="956" y="316" class="small">(sent by the server)</text>
+
+  <text x="40" y="458" class="small">iPhone: iOS doesn't let apps read texts, so iPhone users forward suspicious texts to the Scam Shield number instead.</text>
+</svg>

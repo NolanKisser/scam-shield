@@ -1,15 +1,16 @@
 # Scam Shield
 
-Forward a suspicious text, voicemail or screenshot and get an evidence-backed scam verdict in seconds.
-Linked "guardians" (e.g. an adult child) get alerted when a protected relative receives a likely scam.
+![Scam Shield: a phone shows a fake E-ZPass toll text with a "Possible scam, HIGH RISK 93%" warning on top](docs/hero.svg)
+
+Forward a suspicious text, voicemail or screenshot, or let the Android app check texts from unknown
+numbers automatically, and get an evidence-backed scam verdict in seconds. Linked "guardians" (e.g. an
+adult child) get alerted when a protected relative receives a likely scam.
 
 ## How it works
 
-```
-message -> extract (URLs, domains, phones, $) -> collectors in parallel -> Claude verdict -> blend -> reply
-                                               rules / lookalike / domain age (RDAP) /
-                                               Google Safe Browsing / URLhaus
-```
+![Pipeline: inputs, extraction, four parallel evidence collectors, Claude's judgment, then blending with evidence floors into a final verdict](docs/pipeline.svg)
+
+![Scoring: evidence signals combine to 0.93, blended 40/60 with Claude's 0.93 for 93% HIGH; if Claude is fooled, the lookalike-domain floor keeps the score at 75%](docs/scoring.svg)
 
 - **Collectors** (`app/collectors/`) produce `Signal`s with a weight; hard evidence (blocklist hit, lookalike
   brand domain, domain < 30 days old) also sets a *floor* the final score can't drop below.
@@ -45,6 +46,8 @@ cp .env.example .env        # add ANTHROPIC_API_KEY (or run `ant auth login`)
 3. Add `GUARDIANS=+1protected:+1guardian` to try guardian alerts.
 
 ## Android app (automatic checks): `mobile/`
+
+![Android flow: a new text's notification is checked; saved contacts are ignored without reading the message; unknown numbers are sent to the server, which can trigger a warning notification and a guardian text](docs/android.svg)
 
 Expo app with a local native module (`mobile/modules/sms-guard`) that runs a
 `NotificationListenerService`. When a texting app (Google Messages, Samsung Messages, ...) shows a
